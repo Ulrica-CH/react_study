@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 创建一个容器 -->
+    <div id="test"></div>
+    <!-- 引入核心库 -->
+    <script src="../../js/react.development.js"></script>
+    <!-- 引入react-dom 用于支持react操作dom -->
+    <script src="../../js/react-dom.development.js"></script>
+    <!-- 引入babel 用于将jsx转为js -->
+    <script src="../../js/babel.min.js"></script>
+    <!-- 注意这里的类型 为babel -->
+    <script type="text/babel">
+        //创建类式组件
+        class Person extends React.Component {
+            showData1 = () => {
+                console.log(this.refs); //{input1: input, input2: input}
+                const { input1 } = this
+                alert(input1.value)
+            }
+            showData2 = () => {
+                const { input2 } = this
+                alert(input2.value)
+            }
+            render() {
+                return (
+                    <div>
+                        <input ref={(currentNode) => { this.input1 = currentNode }} type="text" placeholder="点击按钮提示数据" />&nbsp;
+                        //利用箭头函数特性进行简写
+                        <input ref={c => this.input1 = c} type="text" placeholder="点击按钮提示数据" />&nbsp;
+                        //这样的不会调用
+                        <input hahahah={() => { console.log(1); }} type="text" placeholder="点击按钮提示数据" />&nbsp;
+                        <button onClick={this.showData1}>点击提示左侧数据</button>&nbsp;
+                        <input ref={(currentNode) => { this.input2 = currentNode }} onBlur={this.showData2} type="text" placeholder="失去焦点提示数据" />
+                    </div>
+                )
+            }
+        }
+        //渲染组件到页面
+        ReactDOM.render(<Person />, document.getElementById('test'))
+
+
+    </script>
+
+</body>
+
+</html>

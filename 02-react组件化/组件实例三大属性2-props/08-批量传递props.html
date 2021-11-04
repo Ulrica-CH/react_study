@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 创建一个容器 -->
+    <div id="test"></div>
+    <!-- 引入核心库 -->
+    <script src="../../js/react.development.js"></script>
+    <!-- 引入react-dom 用于支持react操作dom -->
+    <script src="../../js/react-dom.development.js"></script>
+    <!-- 引入babel 用于将jsx转为js -->
+    <script src="../../js/babel.min.js"></script>
+    <!-- 注意这里的类型 为babel -->
+    <script type="text/babel">
+        //创建类式组件
+        class Person extends React.Component {
+            render() {
+                const { name, age, sex } = this.props
+                return (
+                    <ul>
+                        <li>姓名：{name}</li>
+                        <li>性别：{sex}</li>
+                        <li>年龄：{age + 1}</li>
+                    </ul>
+                )
+            }
+        }
+        const p = { name: 'Jack', age: "20", sex: '男' }
+        //渲染组件到页面
+        ReactDOM.render(<Person {...p} />, document.getElementById('test'))
+        ReactDOM.render(<Person name="Tom" age={20} sex="女"/>, document.getElementById('test'))
+    </script>
+
+</body>
+
+</html>

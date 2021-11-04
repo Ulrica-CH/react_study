@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //创建一个Person类
+        class Person {
+            //构造器方法
+            constructor(name, age) {
+                //this 指向类的实例对象
+                this.name = name
+                this.age = age
+            }
+            //speak方法放到了类的原型对象上，供实例使用
+            speak() {
+                //通过Person实例调用speak时，speak中的this就是Person实例
+                console.log(`我的名字是${this.name},我今年${this.age}岁`);
+            }
+
+        }
+        //Person实例对象
+        const p1 = new Person('tom', 20)
+        const p2 = new Person('jack', 22)
+        console.log(p1);
+        console.log(p2);
+        p1.speak()
+        p2.speak()
+
+        class Student extends Person {
+            constructor(name, age, grade) {
+                super(name, age)
+                this.grade = grade
+            }
+            //重写父类的方法
+            speak() {
+                console.log(`我的名字是${this.name},我今年${this.age}岁,我的年级是${this.grade}`);
+            }
+            //sayHi()方法放到了Student原型对象上
+            //通过Student实例调用sayHi时，sayHi中的this就是Student实例
+            sayHi() {
+                console.log('hello');
+            }
+        }
+        //如果继承的类想添加自己的属性 需要重写构造器 并且调用super
+        const s1 = new Student('xy', 21, '大四')
+        console.log(s1);//Student {name: 'xy', age: 21, grade: '大四'}
+        s1.speak()//根据原型链查找规则，使用的是Person原型对象上的方法
+        s1.sayHi()
+
+        //总结
+            //1.类中的构造器不是必须的，要对实例进行一些实例化的的操作，如添加属性才写
+            //2.如果A类继承了B类，且A类中写了构造器，那么A类构造器中的super是必须调用的
+            //3.类中所定义的方法，都是放在了类的原型对象上，供实例使用
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 创建一个容器 -->
+    <div id="test"></div>
+    <!-- 引入核心库 -->
+    <script src="../../js/react.development.js"></script>
+    <!-- 引入react-dom 用于支持react操作dom -->
+    <script src="../../js/react-dom.development.js"></script>
+    <!-- 引入babel 用于将jsx转为js -->
+    <script src="....//js/babel.min.js"></script>
+    <!-- 注意这里的类型 为babel -->
+    <script type="text/babel">
+        //1.创建组件
+        class Weather extends React.Component {
+            //constructor调用几次？ 1次 - 创建实例调用
+            constructor(props) {
+                super(props)
+                //初始化状态
+                this.state = { isHot: true, wind: '微风' }
+
+                //强制修改this指向
+                //后面的this.changeWeacher是weather原型对象上的
+                //bind返回的是一个函数
+                //前面的this.changeWeacher时返回的新函数，并且this指向的是Weather实例对象
+                this.changeWeather = this.changeWeather.bind(this)
+            }
+            //render调用了几次？ 1+n 初始化一次，自己修改数据重新渲染n次
+            render() {
+                const { isHot,wind } = this.state
+                return <h1 onClick={this.changeWeather}>今天天气很{isHot ? '炎热' : '凉爽'},{wind}</h1>
+            }
+            //changeWeather调用几次？ n次 自己修改几次调用几次
+            changeWeather() {
+                //changeWeacher放到哪里？ -- Weather的原型对象上，供实例使用
+                //由于changeWeacher是作为onClick的回调，所以不是通过实例调用的，是直接调用的
+                //类中的方法默认开启了局部的严格模式，所以changeWeacher中的this为undefined
+                console.log(this); //undefined
+
+                //最后如何修改isHot的值来进行切换呢
+                //1.获取值
+                const isHot = this.state.isHot
+                //注意：2.不允许直接修改值
+                // this.state.isHot = !isHot 错误写法 打印台显示数据改变，但是react检测不到
+                //3.要是有React.Component的方法setState
+                this.setState({ isHot: !isHot })
+
+                //总结
+                //状态必须通过setState进行更新，且更新是合并，不是替换
+                //state不可以直接修改
+
+            }
+        }
+        //渲染组件到页面
+        ReactDOM.render(<Weather />, document.getElementById('test'))
+    </script>
+
+</body>
+
+</html>

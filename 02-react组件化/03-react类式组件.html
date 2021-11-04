@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 创建一个容器 -->
+    <div id="test"></div>
+    <!-- 引入核心库 -->
+    <script src="../js/react.development.js"></script>
+    <!-- 引入react-dom 用于支持react操作dom -->
+    <script src="../js/react-dom.development.js"></script>
+    <!-- 引入babel 用于将jsx转为js -->
+    <script src="../js/babel.min.js"></script>
+    <!-- 注意这里的类型 为babel -->
+    <script type="text/babel">
+        //创建类式组件
+        class MyClassComponent extends React.Component {
+            render() {
+                //render放在哪里？ --- MyClassComponent原型对象上，供实例使用
+                //render中的this是谁？ --- MyClassComponent的实例对象 也可称为 MyClassComponent组件实例对象 也可成为 组件对象
+                console.log(this);//MyClassComponent {props: {…}, context: {…}, refs: {…}, updater: {…}, _reactInternalFiber: FiberNode, …}
+
+                return <h2>类定义的组件(适用于【复杂组件的定义)</h2>
+            }
+        }
+        //渲染组件到页面
+        ReactDOM.render(<MyClassComponent />, document.getElementById('test'))
+
+        //注意事项
+            //执行了ReactDOM.render()之后发生了什么
+                //1.React解析组件标签，找到了MyClassComponent组件
+                //2.发现组件是类定义的，随后new出来类的实例，通过该实例调用原型上的render方法
+                //3.将render返回的虚拟DOM转化为真实DOM，呈现在页面中
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <!-- 创建一个容器 -->
+        <div id="test"></div>
+        <!-- 引入核心库 -->
+        <script src="../js/react.development.js"></script>
+        <!-- 引入react-dom 用于支持react操作dom -->
+        <script src="../js/react-dom.development.js"></script>
+        <!-- 引入babel 用于将jsx转为js -->
+        <script src="../js/babel.min.js"></script>
+        <!-- 注意这里的类型 为babel -->
+        <script type="text/babel">
+            // 这里创建虚拟DOM不要加引号
+            const VDOM = <h1>hello react</h1>
+            const div = document.getElementById('test')
+            ReactDOM.render(VDOM, document.getElementById('test'))
+            console.log('虚拟DOM', VDOM);
+            console.log('真是DOM', div);
+            // debugger
+    // 1.虚拟DOM本质上就是个object对象（一般对象）
+    // 2.虚拟DOM属性少 更轻
+    // 3.虚拟DON最终会被react渲染成真实DOM 呈现在页面上
+        </script>
+
+    </body>
+
+    </html>
+</body>
+
+</html>

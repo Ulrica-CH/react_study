@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 创建一个容器 -->
+    <div id="test"></div>
+    <!-- 引入核心库 -->
+    <script src="../../js/react.development.js"></script>
+    <!-- 引入react-dom 用于支持react操作dom -->
+    <script src="../../js/react-dom.development.js"></script>
+    <!-- 引入babel 用于将jsx转为js -->
+    <script src="../../js/babel.min.js"></script>
+    <!-- 注意这里的类型 为babel -->
+    <script type="text/babel">
+        //1.创建组件
+        class Weather extends React.Component {
+            //简化不使用constructor
+            //我们为了修改state的初始状态才被动的去使用constructor
+            //类中 我们可以使用直接赋值的方式去添加属性 如 a = 1 
+            //constructor可以省略了
+            // constructor(props) {
+            //     super(props)
+            // }
+            
+            //所以这里可以直接state
+            state = { isHot: true, wind: '微风' }
+            render() {
+                const { isHot, wind } = this.state
+                return <h1 onClick={this.changeWeather}>今天天气很{isHot ? '炎热' : '凉爽'},{wind}</h1>
+            }
+            //这里也可以采用直接赋值的方式把方法放到实例本身
+            //注意使用箭头函数 this查找到上层作用域也就是weather实例
+            //普通函数this为undefined
+            changeWeather = () => {
+                const isHot = this.state.isHot
+                this.setState({ isHot: !isHot })
+            }
+        }
+        //渲染组件到页面
+        ReactDOM.render(<Weather />, document.getElementById('test'))
+    </script>
+
+</body>
+
+</html>
