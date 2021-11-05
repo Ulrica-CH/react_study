@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 创建一个容器 -->
+    <div id="test"></div>
+    <!-- 引入核心库 -->
+    <script src="../../js/react.development.js"></script>
+    <!-- 引入react-dom 用于支持react操作dom -->
+    <script src="../../js/react-dom.development.js"></script>
+    <!-- 引入babel 用于将jsx转为js -->
+    <script src="../../js/babel.min.js"></script>
+    <!-- 注意这里的类型 为babel -->
+    <script type="text/babel">
+        //创建类式组件
+        class Person extends React.Component {
+            /*
+                1.通过onXxxx属性指定事件处理函数
+                    1.1 React使用的是自定义（合成）事件，而不是使用原生DOM事件 ---- 为了更好地兼容性
+                    1.2 React中的事件是通过事件委托方式处理的 --- 为了高效
+                2.通过event.target得到发生事件的DOM元素对象 ---- 不要过度使用ref
+
+            */
+            myRef1 = React.createRef()
+            myRef2 = React.createRef()
+            showData1 = () => {
+                console.log(this.myRef1.current.value);
+            }
+            showData2 = (e) => {
+                console.log(e.target.value);
+            }
+            render() {
+                return (
+                    <div>
+                        <input ref={this.myRef1} type="text" placeholder="点击按钮提示数据" />&nbsp;
+                        <button onClick={this.showData1}>点击提示数据</button>
+                        {/*这种的事件发生对象和取值都是本身，可以使用event.target来获取*/}
+                        {/*react执行回调默认传递了event事件对象*/}
+                        {/*<input onBlur={this.showData2} ref={this.myRef2} type="text" placeholder="失去焦点提示数据" />&nbsp;*/}
+                        <input onBlur={this.showData2} type="text" placeholder="失去焦点提示数据" />&nbsp;
+                    </div>
+                )
+            }
+        }
+        //渲染组件到页面
+        ReactDOM.render(<Person />, document.getElementById('test'))
+    </script>
+
+</body>
+
+</html>
