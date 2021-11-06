@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 创建一个容器 -->
+    <div id="test"></div>
+    <!-- 引入核心库 -->
+    <script src="../../js/react.development.js"></script>
+    <!-- 引入react-dom 用于支持react操作dom -->
+    <script src="../../js/react-dom.development.js"></script>
+    <!-- 引入babel 用于将jsx转为js -->
+    <script src="../../js/babel.min.js"></script>
+    <!-- 注意这里的类型 为babel -->
+    <script type="text/babel">
+        //创建类式组件
+        class Count extends React.Component {
+            constructor(props) {
+                console.log('Count --- constructor');
+                super(props)
+                this.state = { count: 0 }
+            }
+            add = () => {
+                let { count } = this.state
+                count += 1
+                this.setState({ count })
+            }
+            force = () => {
+                this.forceUpdate()
+            }
+            //组件将要挂载的钩子
+            componentWillMount() {
+                console.log('Count --- componentWillMount');
+            }
+            //组件挂载完毕的钩子
+            componentDidMount() {
+                console.log('Count --- componentDidMount');
+
+            }
+            //控制组件更新的阀门
+            shouldComponentUpdate() {
+                console.log('Count --- shouldComponentUpdate');
+                //不写这个钩子 默认返回true 写了这个钩子一定自己返回个值
+                //true代表允许更新，继续往下执行 false代表不允许更新，不会进行后续的操作
+                return false
+            }
+            //组件将要更新的钩子
+            componentWillUpdate() {
+                console.log('Count --- componentillUpdate');
+            }
+            //组件更新完毕的钩子
+            componentDidUpdate() {
+                console.log('Count --- componentDidUpdate');
+            }
+            //初次渲染，状态更新时调用
+            render() {
+                console.log('Count --- render');
+                const count = this.state
+                return (
+                    <div>
+                        <h2>求和:{this.state.count}</h2>
+                        <button onClick={this.add}>+1</button>
+                        <button onClick={this.force}>不更改状态，强制更新</button>
+                    </div>
+                )
+            }
+        }
+        //渲染组件到页面
+        ReactDOM.render(<Count />, document.getElementById('test'))
+    </script>
+
+</body>
+
+</html>
