@@ -11,7 +11,7 @@
 
 # 二、函数式组件
 
-```html
+```react
 <body>
     <!-- 创建一个容器 -->
     <div id="test"></div>
@@ -40,7 +40,7 @@
 ```
 # 三、类的复习
 
-```html
+```react
 <body>
     <script>
         //创建一个Person类
@@ -99,7 +99,7 @@
 - 如果A类继承了B类，且A类中写了构造器，那么A类构造器中的super是必须调用的
 - 类中所定义的方法，都是**放在了类的原型对象**上，供实例使用
 # 四、类式组件
-```html
+```react
 <script type="text/babel">
         //创建类式组件
         class MyClassComponent extends React.Component {

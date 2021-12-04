@@ -12,7 +12,7 @@ vue和react都实现了虚拟DOM，来提高性能。
 
 # 二、验证Diffing算法的存在
 
-```html
+```react
 <script type="text/babel">
         //创建类式组件
         class Time extends React.Component {
@@ -42,9 +42,9 @@ vue和react都实现了虚拟DOM，来提高性能。
 
 页面效果：
 
-![](http://r1zn5ovlm.hd-bkt.clouddn.com/blog/211109/6jgkKFLH33.png?imageslim)
+![](http://cdn.michstabe.cn/blog/211109/6jgkKFLH33.png?imageslim)
 
-![](http://r1zn5ovlm.hd-bkt.clouddn.com/blog/211109/9cgI17k5he.png?imageslim)
+![](http://cdn.michstabe.cn/blog/211109/9cgI17k5he.png?imageslim)
 
 时间是不断在更新的，也就是进行了重新渲染，但是input框内的内容没有发生变化，这也就验证了Divff算法存在
 
@@ -52,15 +52,15 @@ vue和react都实现了虚拟DOM，来提高性能。
 
 那可能有疑问，span中加入input，会更新吗？
 
-```html
+```react
 <span>现在是:{this.state.date.toTimeString()}
 <input type="text" />
 </span>
 ```
 
-![](http://r1zn5ovlm.hd-bkt.clouddn.com/blog/211109/iEB158Gl6F.png?imageslim)
+![](http://cdn.michstabe.cn/blog/211109/iEB158Gl6F.png?imageslim)
 
-![](http://r1zn5ovlm.hd-bkt.clouddn.com/blog/211109/j9fl0IJce3.png?imageslim)
+![](http://cdn.michstabe.cn/blog/211109/j9fl0IJce3.png?imageslim)
 
 时间在变化，可是span中的input中的内容没有改变，
 
@@ -100,7 +100,7 @@ vue和react都实现了虚拟DOM，来提高性能。
 
 ok，show me code
 
-```html
+```react
 <script type="text/babel">
         //创建类式组件
         class Person extends React.Component {
@@ -137,11 +137,11 @@ ok，show me code
     </script>
 ```
 
-![](http://r1zn5ovlm.hd-bkt.clouddn.com/blog/211109/F1h5Fc7lF3.png?imageslim)
+![](http://cdn.michstabe.cn/blog/211109/F1h5Fc7lF3.png?imageslim)
 
 当我点击按钮：
 
-![](http://r1zn5ovlm.hd-bkt.clouddn.com/blog/211109/JaKaGiI0C8.png?imageslim)
+![](http://cdn.michstabe.cn/blog/211109/JaKaGiI0C8.png?imageslim)
 
 没什么问题，但是这背后发生了很大性能浪费。
 
@@ -151,7 +151,7 @@ ok，show me code
 
  
 
-```html
+```react
 初始数据：
 {id:1,name:'小张',age:18},
 {id:2,name:'小李',age:19},
@@ -188,7 +188,7 @@ ok，show me code
 
 ok 先到这 我们来看一下以id作为key
 
-```html
+```react
 <ul>
 	{
 		this.state.persons.map((personObj)=>{
@@ -198,7 +198,7 @@ ok 先到这 我们来看一下以id作为key
 </ul>
 ```
 
-```html
+```react
 慢动作回放----使用id唯一标识作为key
 
 初始数据：
@@ -264,11 +264,11 @@ ok 先到这 我们来看一下以id作为key
 
 首先我现在输入框输入内容：
 
-![](http://r1zn5ovlm.hd-bkt.clouddn.com/blog/211109/lKIeA80IaF.png?imageslim)
+![](http://cdn.michstabe.cn/blog/211109/lKIeA80IaF.png?imageslim)
 
 添加小王以后的信息显示：
 
-![](http://r1zn5ovlm.hd-bkt.clouddn.com/blog/211109/i6FhjE5fDj.png?imageslim)
+![](http://cdn.michstabe.cn/blog/211109/i6FhjE5fDj.png?imageslim)
 
 看出差异了吗？
 

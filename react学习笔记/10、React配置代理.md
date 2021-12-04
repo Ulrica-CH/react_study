@@ -22,13 +22,13 @@
 
 1. 第一步：创建代理配置文件
 
-   ```
+   ```react
    在src下创建配置文件：src/setupProxy.js
    ```
 
 2. 编写setupProxy.js配置具体代理规则：
 
-   ```js
+   ```react
    const proxy = require('http-proxy-middleware')
    
    module.exports = function(app) {
@@ -56,3 +56,4 @@
 
 1. 优点：可以配置多个代理，可以灵活的控制请求是否走代理。
 2. 缺点：配置繁琐，前端请求资源时必须加前缀。
+

@@ -17,7 +17,7 @@
 
 基本实现：
 
-```html
+```react
 <script type="text/babel">
         //创建类式组件
         class Life extends React.Component {
@@ -62,7 +62,7 @@ render函数在初次渲染页面时会调用一次，并且状态更新时会�
 
 我们可以去新建一个按钮，点击按钮执行函数然后新建定时器，不放在render里不就解决了？
 
-```html
+```react
 action = () => {    
                 setInterval(() => {
                     console.log(1);
@@ -77,7 +77,7 @@ action = () => {
 
 是解决了 但是需要我们手动点击，怎么让他自动去执行呢？ -- 生命周期函数
 
-```html
+```react
 //组件挂在完调用
             componentDidMount() {
                 setInterval(() => {
@@ -96,7 +96,7 @@ action = () => {
 
 这样就完美解决了，但是此时如果我卸载组件：
 
-![](http://r1zn5ovlm.hd-bkt.clouddn.com/blog/211106/al7e91h3K3.png?imageslim)
+![](http://cdn.michstabe.cn/blog/211106/al7e91h3K3.png?imageslim)
 
 啥意思：因为我卸载了这个组件，但是定时器还存在，组件不存在状态也就没了，定时器里去修改状态还怎么修改呢，自然就报错了
 
@@ -104,7 +104,7 @@ action = () => {
 
 可以在卸载函数里清除
 
-```html
+```react
 death = () => {
                 clearInterval(this.timer)
                 //卸载DOM，注意语法
@@ -124,7 +124,7 @@ death = () => {
 
 当然，也可以放到生命周期函数里
 
-```html
+```react
 //组件将要卸载时调用 注意是将要
             componentWillUnmount() {
                 clearInterval(this.timer)
@@ -145,7 +145,7 @@ death = () => {
 
 在调用挂载完成钩子 componentDidMount()
 
-```html
+```react
 constructor(props) {
 	console.log('Count --- constructor');
 	super(props)
@@ -174,7 +174,7 @@ render() {
 
 打印结果：
 
-![](http://r1zn5ovlm.hd-bkt.clouddn.com/blog/211106/ImjeKJfkd8.png?imageslim)
+![](http://cdn.michstabe.cn/blog/211106/ImjeKJfkd8.png?imageslim)
 
 注意：生命周期钩子执行顺序不受我们写的顺序影响，特定的时间调用特定的钩子
 
@@ -186,7 +186,7 @@ render() {
 - 当我们不写这个钩子时，默认为true，也就是允许更新
 - 当我们写了这个钩子，必须返回值，true为允许，false为不允许，若为false就不会进行后续的更新。
 
-```
+```react
             //控制组件更新的阀门
             shouldComponentUpdate() {
                 console.log('Count --- shouldComponentUpdate');
@@ -206,24 +206,24 @@ render() {
 
 当我点击+1按钮更新状态时，打印效果：
 
-![](http://r1zn5ovlm.hd-bkt.clouddn.com/blog/211106/dmA3AbkID0.png?imageslim)
+![](http://cdn.michstabe.cn/blog/211106/dmA3AbkID0.png?imageslim)
 
 ### 强制更新时 forceState()
 
 - 强制更新会绕开shouldComponentUpdate()的判断，无论值为true还是fasle都会更新
 
-```html
+```react
 force = () => {
 	this.forceUpdate()
 }
 <button onClick={this.force}>不更改状态，强制更新</button>
 ```
 
-![](http://r1zn5ovlm.hd-bkt.clouddn.com/blog/211106/JJFHiemgH1.png?imageslim)
+![](http://cdn.michstabe.cn/blog/211106/JJFHiemgH1.png?imageslim)
 
 此时我把shouldComponentUpdate()改为false
 
-```html
+```react
 shouldComponentUpdate() {
 	console.log('Count --- shouldComponentUpdate');
 	//不写这个钩子 默认返回true 写了这个钩子一定自己返回个值
@@ -234,17 +234,17 @@ shouldComponentUpdate() {
 
 点击强制更新按钮，打印结果不变：
 
-![](http://r1zn5ovlm.hd-bkt.clouddn.com/blog/211106/DiBHimDD2e.png?imageslim)
+![](http://cdn.michstabe.cn/blog/211106/DiBHimDD2e.png?imageslim)
 
 但此时点击+1按钮：只会调用shouldComponentUpdate()钩子，不会调用其后的钩子。
 
-![](http://r1zn5ovlm.hd-bkt.clouddn.com/blog/211106/kkD5mA8jf1.png?imageslim)
+![](http://cdn.michstabe.cn/blog/211106/kkD5mA8jf1.png?imageslim)
 
 ## 父子组件间的生命周期函数
 
 父子组件写法
 
-```html
+```react
 <script type="text/babel">
         //创建类式组件
         class A extends React.Component {
@@ -277,7 +277,7 @@ shouldComponentUpdate() {
 
 **注意：第一次传递值不会触发钩子，新传递值才会触发**
 
-```html
+```react
 <script type="text/babel">
         //创建类式组件
         class A extends React.Component {
@@ -329,12 +329,12 @@ shouldComponentUpdate() {
     </script>
 ```
 
-![](http://r1zn5ovlm.hd-bkt.clouddn.com/blog/211106/El38DL4akH.png?imageslim)
+![](http://cdn.michstabe.cn/blog/211106/El38DL4akH.png?imageslim)
 
 可见第一次，不会触发。
 
 当我点击换车修改状态并传递时：
-![](http://r1zn5ovlm.hd-bkt.clouddn.com/blog/211106/1daJHb2jbk.png?imageslim)
+![](http://cdn.michstabe.cn/blog/211106/1daJHb2jbk.png?imageslim)
 
 出发了相应的钩子，且更新时的钩子函数也被触发。
 
@@ -382,7 +382,7 @@ shouldComponentUpdate() {
 
 图示（旧的生命周期函数）
 
-![](http://r1zn5ovlm.hd-bkt.clouddn.com/blog/211106/L7dC5DLDab.png?imageslim)
+![](http://cdn.michstabe.cn/blog/211106/L7dC5DLDab.png?imageslim)
 
 **常用钩子：**
 

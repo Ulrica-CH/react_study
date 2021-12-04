@@ -4,6 +4,7 @@
 - 组件被称为"状态机", 通过**更新组件的state来更新对应的页面显示**(重新渲染组件)
 - 注意组件中自定义方法中的this问题（事件调用）
 
+```react
 <script type="text/babel">
         //1.创建组件
         class Weather extends React.Component {
@@ -26,12 +27,13 @@
         //渲染组件到页面
         ReactDOM.render(<Weather />, document.getElementById('test'))
     </script>
+```
 
 - 由于changeWeacher是作为onClick的回调，所以不是通过实例调用的，是直接调用的
 - 类中的方法默认开启了局部的严格模式，所以changeWeacher中的this为undefined
 - 如何修改this指向？
 
-```html
+```js
 //强制修改this指向
 //后面的this.changeWeacher是weather原型对象上的
 //bind返回的是一个函数
@@ -41,24 +43,24 @@ this.changeWeather = this.changeWeather.bind(this)
 
 - 修改组件中的状态值 setState
 
-```html
+```js
 //最后如何修改isHot的值来进行切换呢
-                //1.获取值
-                const isHot = this.state.isHot
-                //注意：2.不允许直接修改值
-                // this.state.isHot = !isHot 错误写法 打印台显示数据改变，但是react检测不到
-                //3.要是有React.Component的方法setState
-                this.setState({ isHot: !isHot })
+//1.获取值
+const isHot = this.state.isHot
+//注意：2.不允许直接修改值
+// this.state.isHot = !isHot 错误写法 打印台显示数据改变，但是react检测不到
+//3.要是有React.Component的方法setState
+this.setState({ isHot: !isHot })
 
-                //总结
-                //状态必须通过setState进行更新，且更新是合并，不是替换
-                //state不可以直接修改
+//总结
+//状态必须通过setState进行更新，且更新是合并，不是替换
+//state不可以直接修改
 ```
 
 - 简写方式：赋值语句形式+箭头函数
 - 类中，要添加一个属性，可以采用直接赋值的方式
 
-```html
+```react
 <script>
         class Person {
             constructor(name, age) {
@@ -77,7 +79,7 @@ this.changeWeather = this.changeWeather.bind(this)
 - 但要使用箭头函数，因为普通函数this严格模式下为undefined、箭头函数this为上层作用域的this也就是weath实例
 - 所以简写后
 
-```html
+```react
 <script type="text/babel">
         //1.创建组件
         class Weather extends React.Component {
@@ -120,7 +122,7 @@ this.changeWeather = this.changeWeather.bind(this)
 1. 通过标签属性从组件外向组件内传递变化的数据
 2. 注意:组件内部不要修改props数据
 
-```html
+```react
 <script type="text/babel">
         //创建类式组件
         class Person extends React.Component {
@@ -140,11 +142,11 @@ this.changeWeather = this.changeWeather.bind(this)
     </script>
 ```
 
-![props使用](E:\Typora笔记\img\props使用.png)
+![props使用](http://cdn.michstabe.cn/blog/211104/aCBIfbJ5eK.png?imageslim)
 
 ## 扩展运算符的复习
 
-```html
+```js
 <body>
     <script>
         let arr1 = [1, 2, 3, 4]
@@ -183,7 +185,7 @@ this.changeWeather = this.changeWeather.bind(this)
 
 ## 批量传递props
 
-```html
+```react
 <script type="text/babel">
         //创建类式组件
         class Person extends React.Component {
@@ -212,7 +214,7 @@ this.changeWeather = this.changeWeather.bind(this)
 
 如果想把页面上的age都+1，但是原来数据不改变，可以这样
 
-```HTML
+```react
 <li>年龄：{age + 1}</li>
 ```
 
@@ -234,7 +236,7 @@ name属性是必须的，不能不进行赋值
 
 在react15.5版本及以下我们可以这样写：
 
-```html
+```react
 Person.propTypes = {
 	name:React.PropTypes.属性
 }
@@ -244,7 +246,7 @@ Person.propTypes = {
 
 写法也发生改变
 
-```html
+```react
 <!-- 引入prop-types文件，对props进行限制 -->
 <script src="../js/prop-types.js"></script>
 
@@ -282,7 +284,7 @@ Person.propTypes = {
 
 **类（class）通过 static 关键字定义静态方法。不能在类的实例上调用静态方法，而应该通过类本身调用**
 
-```html
+```react
 <script type="text/babel">
         //创建类式组件
         class Person extends React.Component {
@@ -324,13 +326,13 @@ Person.propTypes = {
 
 1.初始化state
 
-```html
+```react
 this.state = { isHot: true, wind: '微风' }
 ```
 
 2.为事件监听函数绑定实例
 
-```html
+```react
 this.changeWeather = this.changeWeather.bind(this)
 ```
 
@@ -340,7 +342,7 @@ this.changeWeather = this.changeWeather.bind(this)
 
 但是如果使用constructor，一定要进行props的传递与接收
 
-```html
+```react
 constructor(props) {
 	super(props)
 	console(this.props)
@@ -355,7 +357,7 @@ constructor(props) {
 
 因为函数可以传参
 
-```html
+```react
 <script type="text/babel">
         //创建函数式组件
         function Person(props) {
@@ -399,7 +401,7 @@ constructor(props) {
 
 - 当第二个输入框失去焦点时，提示输入框的值
 
-```html
+```react
 <script type="text/babel">
         //创建类式组件
         class Person extends React.Component {
@@ -431,7 +433,7 @@ constructor(props) {
 
 ## 回调形式的ref
 
-```html
+```react
 <script type="text/babel">
         //创建类式组件
         class Person extends React.Component {
@@ -463,20 +465,20 @@ constructor(props) {
 
 回调函数的参数是ref所在的标签节点，只有ref标记的react才会去调用
 
-```html
+```react
 //利用箭头函数特性进行简写
 <input ref={c => this.input1 = c} type="text" placeholder="点击按钮提示数据" />&nbsp;
 //这样的不会调用
 <input hahahah={() => { console.log(1); }} type="text" placeholder="点击按钮提示数据" />&nbsp;
 ```
 
-![](http://r1zn5ovlm.hd-bkt.clouddn.com/blog/211104/8cG38L5lel.png?imageslim)
+![](http://cdn.michstabe.cn/blog/211104/8cG38L5lel.png?imageslim)
 
 回调形式ref的执行次数问题
 
 内联的回调，渲染时调用一次，但是更新时会调用两次，看代码
 
-```html
+```react
 <script type="text/babel">
         //创建类式组件
         class Person extends React.Component {
@@ -508,19 +510,19 @@ constructor(props) {
 
 当我没进行更新时，只会调用一次。
 
-![](http://r1zn5ovlm.hd-bkt.clouddn.com/blog/211104/i2kmaB940H.png?imageslim)
+![](http://cdn.michstabe.cn/blog/211104/i2kmaB940H.png?imageslim)
 
 此时我点击按钮进行更新页面：
 
-![](http://r1zn5ovlm.hd-bkt.clouddn.com/blog/211104/CAEj7244K2.png?imageslim)
+![](http://cdn.michstabe.cn/blog/211104/CAEj7244K2.png?imageslim)
 
 可以看到，更新时调用了两次。
 
-![mark](http://r1zn5ovlm.hd-bkt.clouddn.com/blog/211104/dJaAI1B042.png?imageslim)
+![mark](http://cdn.michstabe.cn/blog/211104/dJaAI1B042.png?imageslim)
 
 如何解决？进行类绑定的回调
 
-```html
+```react
 saveInput = (c) => {
                 this.input1 = c
                 console.log(c);
@@ -533,7 +535,7 @@ saveInput = (c) => {
 
 ## React.createRef()
 
-```html
+```react
 // React.createRef调用后可以返回一个容器
 // 该容器可以存储被ref所标识的节点,该容器是“专人专用”的
 myRef = React.createRef() 
@@ -541,7 +543,7 @@ myRef = React.createRef()
 
 ```
 
-```html
+```react
 <script type="text/babel">
         //创建类式组件
         class Person extends React.Component {
@@ -563,11 +565,11 @@ myRef = React.createRef()
     </script>
 ```
 
-![mark](http://r1zn5ovlm.hd-bkt.clouddn.com/blog/211104/915A5a2e0C.png?imageslim)
+![mark](http://cdn.michstabe.cn/blog/211104/915A5a2e0C.png?imageslim)
 
 如何取值？
 
-```html
+```react
 showData = () => {
                 console.log(this.myRef.current.value);
             } 
@@ -580,7 +582,7 @@ showData = () => {
 - 如果想要多次使用，需要多次创建
 - 如果多次使用只创建一个，后面的会覆盖之前的
 
-```
+```react
 myRef1 = React.createRef()
 myRef2 = React.createRef()
 <input ref={this.myRef2} type="text" placeholder="点击按钮提示数据" />&nbsp;

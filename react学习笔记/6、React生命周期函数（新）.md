@@ -1,8 +1,8 @@
 # 一、看一下官方文档的说法
 
-![](http://r1zn5ovlm.hd-bkt.clouddn.com/blog/211107/39A52g8i0l.png?imageslim)
+![](http://cdn.michstabe.cn/blog/211107/39A52g8i0l.png?imageslim)
 
-![](http://r1zn5ovlm.hd-bkt.clouddn.com/blog/211107/KJI4eK1FlA.png?imageslim)
+![](http://cdn.michstabe.cn/blog/211107/KJI4eK1FlA.png?imageslim)
 
 总结一下：
 
@@ -13,7 +13,7 @@
   - 在17.0版本，会删除这三个生命周期钩子（还没被删除，但是也要避免以前的写法）
   - 我们使用17.0版本的react.js文件来看一下
 
-```html
+```react
 <body>
     <!-- 创建一个容器 -->
     <div id="test"></div>
@@ -115,7 +115,7 @@
 </body>
 ```
 
-![](http://r1zn5ovlm.hd-bkt.clouddn.com/blog/211107/Db02bKHa6e.png?imageslim)
+![](http://cdn.michstabe.cn/blog/211107/Db02bKHa6e.png?imageslim)
 
 可以看到，我是引入了新版本也就是react17.0.1的版本
 
@@ -123,7 +123,7 @@
 
 我们加上前缀UNSAFE_
 
-```html
+```react
 		   //组件将要挂载的钩子
             UNSAFE_componentWillMount() {
                 console.log('Count --- componentWillMount');
@@ -138,7 +138,7 @@
             }
 ```
 
-![](http://r1zn5ovlm.hd-bkt.clouddn.com/blog/211107/03D47BhH7l.png?imageslim)
+![](http://cdn.michstabe.cn/blog/211107/03D47BhH7l.png?imageslim)
 
 可以看到，不报警告了
 
@@ -146,7 +146,7 @@
 
 来看一下新版的生命周期钩子
 
-![](http://r1zn5ovlm.hd-bkt.clouddn.com/blog/211107/BDlm131m2h.png?imageslim)
+![](http://cdn.michstabe.cn/blog/211107/BDlm131m2h.png?imageslim)
 
 总结下：
 
@@ -160,7 +160,7 @@
 
 先看代码吧：
 
-```html
+```react
 <script type="text/babel">
         //创建类式组件
         class Count extends React.Component {
@@ -218,11 +218,11 @@
 
 看下输出
 
-![](http://r1zn5ovlm.hd-bkt.clouddn.com/blog/211107/iCFhHHLHhm.png?imageslim)
+![](http://cdn.michstabe.cn/blog/211107/iCFhHHLHhm.png?imageslim)
 
 报错：把这个方法放在实例上会被忽略，应该用static标识为类上的方法
 
-```html
+```react
 static getDerivedStateFromProps() {
                 console.log('Count --- getDerivedStateFromProps');
             }
@@ -230,30 +230,30 @@ static getDerivedStateFromProps() {
 
 在看输出：
 
-![mark](http://r1zn5ovlm.hd-bkt.clouddn.com/blog/211107/Hma4d6j0Ce.png?imageslim)
+![mark](http://cdn.michstabe.cn/blog/211107/Hma4d6j0Ce.png?imageslim)
 
 报错解释：应该返回一个状态对象或者null
 
 返回null试试
 
-![](http://r1zn5ovlm.hd-bkt.clouddn.com/blog/211107/hHKfHGgkKh.png?imageslim)
+![](http://cdn.michstabe.cn/blog/211107/hHKfHGgkKh.png?imageslim)
 
 返回一个状态对象：
 
-```html
+```react
 static getDerivedStateFromProps() {
                 console.log('Count --- getDerivedStateFromProps');
                 return {count: 100}
             }
 ```
 
-![](http://r1zn5ovlm.hd-bkt.clouddn.com/blog/211107/70Fd2Df2Fe.png?imageslim)
+![](http://cdn.michstabe.cn/blog/211107/70Fd2Df2Fe.png?imageslim)
 
 注意此时 我们修改状态+1，数值100是不变化的，而且不再是默认的数值1
 
 上面我们提到，可以从props中获取值：
 
-```html
+```react
 static getDerivedStateFromProps(props) {
                 console.log('Count --- getDerivedStateFromProps',props);
                 return props
@@ -263,20 +263,20 @@ static getDerivedStateFromProps(props) {
 
 看下输出：这里的返回的是props，且改变状态值页面上不会变化，因为依赖的是props，peops不变，页面自然不变
 
-![](http://r1zn5ovlm.hd-bkt.clouddn.com/blog/211107/jdmfledGIE.png?imageslim)
+![](http://cdn.michstabe.cn/blog/211107/jdmfledGIE.png?imageslim)
 
 这个钩子用的情况较特殊：state的值在任何时候都取决于props这个情况下才会用到，其他情况很少用到。
 
 这个钩子可以传递两个参数：
 
-```html
+```react
 static getDerivedStateFromProps(props,state) {
                 console.log('Count --- getDerivedStateFromProps',props,state);
                 return props
             }
 ```
 
-![](http://r1zn5ovlm.hd-bkt.clouddn.com/blog/211107/ge7ah00LCj.png?imageslim)
+![](http://cdn.michstabe.cn/blog/211107/ge7ah00LCj.png?imageslim)
 
 state是初始状态值，props是返回的状态对象。
 
@@ -290,7 +290,7 @@ state是初始状态值，props是返回的状态对象。
 
 看下代码：
 
-```html
+```react
 static getDerivedStateFromProps(props,state) {
                 console.log('Count --- getDerivedStateFromProps',props,state);
                 return props
@@ -302,11 +302,11 @@ static getDerivedStateFromProps(props,state) {
 
 初始页面打印效果：
 
-![](http://r1zn5ovlm.hd-bkt.clouddn.com/blog/211107/alBGFj6mGE.png?imageslim)
+![](http://cdn.michstabe.cn/blog/211107/alBGFj6mGE.png?imageslim)
 
 但我们点击页面+1后
 
-![](http://r1zn5ovlm.hd-bkt.clouddn.com/blog/211107/ec1bf9eG1J.png?imageslim)
+![](http://cdn.michstabe.cn/blog/211107/ec1bf9eG1J.png?imageslim)
 
 页面上没有改变，因为受props影响
 
@@ -318,7 +318,7 @@ null就不说了，什么是快照值？任何类型都可以，可以返回Numb
 
 我们先来看一个钩子 componentDidUpdate：
 
-```
+```react
 //便于演示，把这俩钩子先注释掉
 //static getDerivedStateFromProps(props, state) {
             //     console.log('Count --- getDerivedStateFromProps', props, state);
@@ -335,11 +335,11 @@ null就不说了，什么是快照值？任何类型都可以，可以返回Numb
 
 初始页面：
 
-![](http://r1zn5ovlm.hd-bkt.clouddn.com/blog/211107/agjHBdaD5A.png?imageslim)
+![](http://cdn.michstabe.cn/blog/211107/agjHBdaD5A.png?imageslim)
 
 点击+1后：
 
-![](http://r1zn5ovlm.hd-bkt.clouddn.com/blog/211107/kIKeHJ2b3i.png?imageslim)
+![](http://cdn.michstabe.cn/blog/211107/kIKeHJ2b3i.png?imageslim)
 
 **可以看到 打印出来的是先前的状态值：**
 
@@ -351,7 +351,7 @@ null就不说了，什么是快照值？任何类型都可以，可以返回Numb
 
 **a,b具体含义：preProps，preState及之前的props和state**
 
-```html
+```react
 //组件更新完毕的钩子
             componentDidUpdate(preProps, preState) {
                 console.log('Count --- componentDidUpdate', preProps, preState);
@@ -362,11 +362,11 @@ null就不说了，什么是快照值？任何类型都可以，可以返回Numb
 
 看下官方文档
 
-![](http://r1zn5ovlm.hd-bkt.clouddn.com/blog/211107/bJ5dKEfj67.png?imageslim)
+![](http://cdn.michstabe.cn/blog/211107/bJ5dKEfj67.png?imageslim)
 
 **可以看到此方法的任何返回值都作为参数传递给componentDidUdate()**
 
-```html
+```react
 getSnapshotBeforeUpdate(preProps, preState) {
                 console.log('Count --- getSnapshotBeforeUpdate',preProps,preState);
                 return '测试值'
@@ -378,11 +378,11 @@ componentDidUpdate(preProps, preState,snapshot) {
 
 初始页面打印：
 
-![](http://r1zn5ovlm.hd-bkt.clouddn.com/blog/211107/d596eeBgBg.png?imageslim)
+![](http://cdn.michstabe.cn/blog/211107/d596eeBgBg.png?imageslim)
 
 +1后：
 
-![](http://r1zn5ovlm.hd-bkt.clouddn.com/blog/211107/6h695223de.png?imageslim)
+![](http://cdn.michstabe.cn/blog/211107/6h695223de.png?imageslim)
 
 可以看到 componentDidMount第三个值就是传递过来的快照值
 
@@ -398,7 +398,7 @@ componentDidUpdate(preProps, preState,snapshot) {
 
 一个内容框不断新增内容，可以上滑下滚动查看，不滚动是内容区域信息不变，新增内容在scroll范围内不显示。
 
-```html
+```react
 <script type="text/babel">
         //创建类式组件
         class List extends React.Component {

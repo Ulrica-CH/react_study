@@ -114,7 +114,7 @@ export default class App extends Component {
 
 此时会报错：
 
-![](http://r1zn5ovlm.hd-bkt.clouddn.com/blog/211117/0F8AfF7FiA.png?imageslim)
+![](http://cdn.michstabe.cn/blog/211117/0F8AfF7FiA.png?imageslim)
 
 意思要有一个`<Router></Router>`来包裹,但实际上有有两个Router，我们使用BrowserRouter
 
@@ -128,7 +128,7 @@ import { Link,BrowserRouter} from 'react-router-dom';
 
 这样就能正常显示了：
 
-![](http://r1zn5ovlm.hd-bkt.clouddn.com/blog/211117/Kb77k3gkbg.png?imageslim)
+![](http://cdn.michstabe.cn/blog/211117/Kb77k3gkbg.png?imageslim)
 
 此时点击About Home对应地址栏会变化，**但是页面不刷新**
 
@@ -142,7 +142,7 @@ import { Link, BrowserRouter, Route } from 'react-router-dom';
 
 此时会报错：
 
-![](http://r1zn5ovlm.hd-bkt.clouddn.com/blog/211117/b8HGhLKg9F.png?imageslim)
+![](http://cdn.michstabe.cn/blog/211117/b8HGhLKg9F.png?imageslim)
 
 还是要使用Router包裹
 
@@ -155,7 +155,7 @@ import { Link, BrowserRouter, Route } from 'react-router-dom';
 
 可以了吗？
 
-![](http://r1zn5ovlm.hd-bkt.clouddn.com/blog/211117/4LFabAKB8A.png?imageslim)
+![](http://cdn.michstabe.cn/blog/211117/4LFabAKB8A.png?imageslim)
 
 为啥？
 

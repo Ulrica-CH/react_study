@@ -181,7 +181,7 @@ saveFormdata = (data) => {
 </form>
 ```
 
-![mark](http://r1zn5ovlm.hd-bkt.clouddn.com/blog/211105/Hf6718Edjc.png?imageslim)
+![mark](http://cdn.michstabe.cn/blog/211105/Hf6718Edjc.png?imageslim)
 
 此时我们拿到数据了，如果要进行setState怎么写呢？
 
@@ -191,11 +191,11 @@ return (e) => {
 	}
 ```
 
-![mark](http://r1zn5ovlm.hd-bkt.clouddn.com/blog/211105/g0j5dje77K.png?imageslim)
+![mark](http://cdn.michstabe.cn/blog/211105/g0j5dje77K.png?imageslim)
 
 所以这种写法是不对的，要使用对象属性
 
-![mark](http://r1zn5ovlm.hd-bkt.clouddn.com/blog/211105/4aJjBE1m4i.png?imageslim)
+![mark](http://cdn.michstabe.cn/blog/211105/4aJjBE1m4i.png?imageslim)
 
 关于对象属性：
 

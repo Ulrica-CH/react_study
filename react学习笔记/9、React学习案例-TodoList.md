@@ -1,6 +1,6 @@
 # 一、案例效果及思路
 
-![](http://r1zn5ovlm.hd-bkt.clouddn.com/blog/211110/df7C1A2Jmd.png?imageslim)
+![](http://cdn.michstabe.cn/blog/211110/df7C1A2Jmd.png?imageslim)
 
 - 当输入待办事项，并Enter后可增加任务到待办事项列表中。
 - 点击对号表示已完成，左下角对应显示完成数量
@@ -11,7 +11,7 @@
 
 抽离成输入框所在Header组件，列表List组件，单个任务Item组件，以及底部Footer组件，按公司习惯开发（index.jsx index.css）
 
-![](http://r1zn5ovlm.hd-bkt.clouddn.com/blog/211110/EbG0D5lIlI.png?imageslim)
+![](http://cdn.michstabe.cn/blog/211110/EbG0D5lIlI.png?imageslim)
 
 ## 实现思想：
 
@@ -25,7 +25,7 @@
 
 首先在App组件中定义数据并传递List组件
 
-```html
+```react
 export default class App extends Component {
   state = {
     todos: [
@@ -51,7 +51,7 @@ export default class App extends Component {
 
 List组件通过props接收数据：
 
-```html
+```react
 export default class List extends Component {
   render() {
     const { todos } = this.props;
@@ -69,7 +69,7 @@ export default class List extends Component {
 
 但是每个任务的具体信息要通过Item组件显示，所以传递数据给Item
 
-```html
+```react
 {todos.map((todo) => {
           return <Item key={todo.id} {...todo} />;
         })}
@@ -79,7 +79,7 @@ export default class List extends Component {
 
 Item组件：
 
-```html
+```react
 export default class Item extends Component {
   state = { mouse: false };
   handleMouse = (flag) => {
@@ -117,7 +117,7 @@ defaultChecked:默认选中，可以通过点击更改选中状态(会有bug，�
 
 App.jsx
 
-```html
+```react
 //新增todo事项
   addTodo = (todoObj) => {
     const newTodos = [todoObj, ...this.state.todos];
@@ -130,7 +130,7 @@ App.jsx
 
 Header.jsx
 
-```html
+```react
 add = (e) => {
     //解构赋值
     const { target, keyCode } = e;
@@ -178,7 +178,7 @@ onMouseLeave:鼠标移出
 - 给每个li添加事件，事件共用一回调函数，通过flag判断，true为移入，false为移出，回调再次返回函数进行修改初始状态
 - style中通过三元表达式控制高亮还是正常，删除按钮同理。
 
-```html
+```react
 state = { mouse: false };
   handleMouse = (flag) => {
     return () => {
@@ -212,7 +212,7 @@ state = { mouse: false };
 
 Item组件：
 
-```html
+```react
 //勾选已完成
   handleCheck = (id) => {
     return (e) => {
@@ -230,7 +230,7 @@ Item组件：
 
 App组件:
 
-```html
+```react
 //updateTodo用于更新一个todo
   updateTodo = (id, done) => {
     const newTodos = this.state.todos.map((todo) => {
@@ -252,7 +252,7 @@ App组件:
 
 npm i prop-types
 
-```html
+```react
 import PropTypes from 'prop-types';
 
 //对props进行限制
@@ -265,7 +265,7 @@ import PropTypes from 'prop-types';
 
 Item组件
 
-```html
+```react
 //删除todo
   handleDelete = (id) => {
     this.props.deleteTodo(id);
@@ -284,7 +284,7 @@ Item组件
 
 App组件：
 
-```html
+```react
 //deleteTodo用于删除一个todo
   deleteTodo = (id) => {
     const newTodos = this.state.todos.filter((todo) => {
@@ -304,7 +304,7 @@ App组件：
 
 Footer组件：
 
-```html
+```react
 const { todos } = this.props;
     //已完成总数
     const doneCount = todos.reduce((pre, todo) => pre + (todo.done ? 1 : 0), 0);
@@ -316,7 +316,7 @@ const { todos } = this.props;
 
 ## Footer全选后 todo为全选择 实现
 
-```html
+```react
 //全选
   handleCheckAll = (e) => {
     this.props.checkAllTodo(e.target.checked);
@@ -332,7 +332,7 @@ const { todos } = this.props;
 
 App组件
 
-```html
+```react
  //全选todo为已完成
   checkAllTodo = (done) => {
     const newTodos = this.state.todos.map((todo) => {
@@ -344,7 +344,7 @@ App组件
 
 Footer
 
-```html
+```react
 //清除所有已完成
   clearAll = () => {
     this.props.clearAllDone();
@@ -357,7 +357,7 @@ Footer
 
 App
 
-```
+```react
 //清除所有已完成任务
   clearAllDone = () => {
     const newTodos = this.state.todos.filter((todo) => {

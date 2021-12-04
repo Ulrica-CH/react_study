@@ -20,17 +20,17 @@ react提供了一个用于创建react项目的脚手架库: **create-react-app**
 
 页面效果：
 
-![](http://r1zn5ovlm.hd-bkt.clouddn.com/blog/211109/7l7498B1H7.png?imageslim)
+![](http://cdn.michstabe.cn/blog/211109/7l7498B1H7.png?imageslim)
 
 注意如果创建项目报错：
 
-![](http://r1zn5ovlm.hd-bkt.clouddn.com/blog/211109/b4mK102K6h.png?imageslim)
+![](http://cdn.michstabe.cn/blog/211109/b4mK102K6h.png?imageslim)
 
 执行npm cache clean --force在重新创建即可
 
 # 二、脚手架文件介绍
 
-![mark](http://r1zn5ovlm.hd-bkt.clouddn.com/blog/211109/GEaADHIJl5.png?imageslim)
+![mark](http://cdn.michstabe.cn/blog/211109/GEaADHIJl5.png?imageslim)
 
 public ---- 静态资源文件夹
 
@@ -43,7 +43,7 @@ public ---- 静态资源文件夹
 
 index.html文件：
 
-```html
+```react
 <!DOCTYPE html>
 <html lang="en">
 
@@ -98,7 +98,7 @@ src ---- 源码文件夹
 
 App.js文件：
 
-```html
+```react
 import logo from './logo.svg';
 import './App.css';
 
@@ -130,7 +130,7 @@ export default App;
 
 index.js文件:
 
-```html
+```react
 //引入核心库
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -156,11 +156,11 @@ React.StrictMode:严格模式检测
 
 只需要三个重要文件index.html index.js App.js
 
-![](http://r1zn5ovlm.hd-bkt.clouddn.com/blog/211109/hkFdkA04Gg.png?imageslim)
+![](http://cdn.michstabe.cn/blog/211109/hkFdkA04Gg.png?imageslim)
 
 index.html:
 
-```html
+```react
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -177,7 +177,7 @@ index.html:
 
 App.js:
 
-```html
+```react
 import React from 'react';
 class App extends React.Component {
   render() {
@@ -193,7 +193,7 @@ export default App;
 
 index.js:
 
-```html
+```react
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
@@ -203,15 +203,15 @@ ReactDOM.render(<App />, document.getElementById('root'));
 
 页面效果：
 
-![](http://r1zn5ovlm.hd-bkt.clouddn.com/blog/211109/B1H4LlaE64.png?imageslim)
+![](http://cdn.michstabe.cn/blog/211109/B1H4LlaE64.png?imageslim)
 
 新建组件建议放到components文件夹里并创建对应组件文件夹方便管理：
 
-![](http://r1zn5ovlm.hd-bkt.clouddn.com/blog/211109/6KBciB9937.png?imageslim)
+![](http://cdn.michstabe.cn/blog/211109/6KBciB9937.png?imageslim)
 
 此时APP.js要引入组件：
 
-```html
+```react
 import React from 'react';
 import Hello from './components/Hello/Hello';
 import Welcome from './components/Welcome/Welcome';
@@ -232,7 +232,7 @@ export default App;
 
 Welcome组件：
 
-```html
+```react
 import React from 'react';
 import './Welcome.css'
 class Welcome extends React.Component {
@@ -250,7 +250,7 @@ export default Welcome;
 
 Welcome.css:
 
-```html
+```react
 .title{
     background-color: green;
 }
@@ -260,24 +260,24 @@ Welcome.css:
 
 页面效果：
 
-![](http://r1zn5ovlm.hd-bkt.clouddn.com/blog/211109/61Im2hgfKE.png?imageslim)
+![](http://cdn.michstabe.cn/blog/211109/61Im2hgfKE.png?imageslim)
 
 ## 关于简写：
 
-```html
+```react
 class App extends React.Component
 ```
 
 可以改写：
 
-```html
+```react
 const { Component } = React;
 class App extends Component
 ```
 
 或者：
 
-```html
+```react
 import React,{Component} from 'react';
 class App extends Component
 ```
@@ -288,18 +288,18 @@ class App extends Component
 
 有的公司为了便于开发会把components文件夹下文件改写：
 
-![mark](http://r1zn5ovlm.hd-bkt.clouddn.com/blog/211109/3LDd3heDCF.png?imageslim)
+![mark](http://cdn.michstabe.cn/blog/211109/3LDd3heDCF.png?imageslim)
 
 这样引入的的时候写法就简便了：
 
-```html
+```react
 import Hello from './components/Hello';
 import Welcome from './components/Welcome'
 ```
 
 但是查看文件就比较麻烦了：
 
-![](http://r1zn5ovlm.hd-bkt.clouddn.com/blog/211109/EGDHDj4fBL.png?imageslim)
+![](http://cdn.michstabe.cn/blog/211109/EGDHDj4fBL.png?imageslim)
 
 不过也得了解，去了公司要按规矩办事。
 
@@ -313,11 +313,11 @@ index.js是入口文件
 
 可以把组件.js后缀修改为.jsx
 
-![](http://r1zn5ovlm.hd-bkt.clouddn.com/blog/211109/aegbBdFk15.png?imageslim)
+![](http://cdn.michstabe.cn/blog/211109/aegbBdFk15.png?imageslim)
 
 引入的时候直接写文件名就可以，不用加.jsx后缀，默认支持
 
-```html
+```react
 import Hello from './components/Hello/Hello';
 import Welcome from './components/Welcome/Welcome';
 ```
@@ -328,7 +328,7 @@ App.js文件一般不用修改。
 
 我们上面如果Hello组件，Welcome组件都设置了样式
 
-```html
+```react
 Hello组件
 .title{
     background-color: green;
@@ -341,7 +341,7 @@ Welcome组件
 
 那么最后页面效果？
 
-![](http://r1zn5ovlm.hd-bkt.clouddn.com/blog/211109/Eb441c944D.png?imageslim)
+![](http://cdn.michstabe.cn/blog/211109/Eb441c944D.png?imageslim)
 
 因为两个组件都集中到了APP组件中，且Welcome最后引入，那么title样式会覆盖Hello组件的title样式？
 
@@ -351,7 +351,7 @@ Hello.css修改为Hello.module.css
 
 然后修改Hello.js:
 
-```html
+```react
 import React from 'react';
 //注意写法
 import hello from './Hello.module.css'
@@ -370,7 +370,7 @@ export default Hello;
 
 这样就解决了：
 
-![](http://r1zn5ovlm.hd-bkt.clouddn.com/blog/211109/jL12fc7hcj.png?imageslim)
+![](http://cdn.michstabe.cn/blog/211109/jL12fc7hcj.png?imageslim)
 
 ## react快捷创建组件插件
 
@@ -378,15 +378,15 @@ export default Hello;
 
 安装插件：
 
-![](http://r1zn5ovlm.hd-bkt.clouddn.com/blog/211109/C8gKa816Gl.png?imageslim)
+![](http://cdn.michstabe.cn/blog/211109/C8gKa816Gl.png?imageslim)
 
 新建目录：
 
-![](http://r1zn5ovlm.hd-bkt.clouddn.com/blog/211109/4fe1CmC0Kj.png?imageslim)
+![](http://cdn.michstabe.cn/blog/211109/4fe1CmC0Kj.png?imageslim)
 
 然后输入rcc enter：
 
-```html
+```react
 import React, { Component } from 'react'
 
 export default class Test extends Component {
@@ -403,7 +403,7 @@ export default class Test extends Component {
 
 输入rfc enter：
 
-```html
+```react
 import React from 'react'
 
 export default function Test() {

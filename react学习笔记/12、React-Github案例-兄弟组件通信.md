@@ -170,11 +170,11 @@ fetch(`/api1/search/users2?q=${keyWord}`).then(
 
 
 
-![](http://r1zn5ovlm.hd-bkt.clouddn.com/blog/211116/DDhf1KL35B.png?imageslim)
+![](http://cdn.michstabe.cn/blog/211116/DDhf1KL35B.png?imageslim)
 
 路由错误时返回信息：
 
-![](http://r1zn5ovlm.hd-bkt.clouddn.com/blog/211116/4hdE2iEc76.png?imageslim)
+![](http://cdn.michstabe.cn/blog/211116/4hdE2iEc76.png?imageslim)
 
 可以看到都返回信息，但是状态码等信息发生了变化
 
@@ -186,7 +186,7 @@ fetch(`/api1/search/users2?q=${keyWord}`).then(
       },
 ```
 
-![](http://r1zn5ovlm.hd-bkt.clouddn.com/blog/211116/8CeD9CemiK.png?imageslim)
+![](http://cdn.michstabe.cn/blog/211116/8CeD9CemiK.png?imageslim)
 
 数据就有了，但是注意.json()返回的是一个promise对象，所以我们还得.then一下
 
@@ -207,7 +207,7 @@ fetch(`/api1/search/users2?q=${keyWord}`).then(
 
 这样就能拿到数据了：
 
-![](http://r1zn5ovlm.hd-bkt.clouddn.com/blog/211116/cd8Hj1b5II.png?imageslim)
+![](http://cdn.michstabe.cn/blog/211116/cd8Hj1b5II.png?imageslim)
 
 但是此时如果我们把网络断开发送请求，发现返回的数据时undefined
 
@@ -228,7 +228,7 @@ fetch(`/api1/search/users2?q=${keyWord}`).then(
 
 可以使用asynx/await改造
 
-```js
+```react
  try {
       const res = await fetch(`/api1/search/users?q=${keyWord}`);
       console.log(res);
