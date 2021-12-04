@@ -172,7 +172,7 @@ debugger;
 - 全称: JavaScript XML
 - React定义的一种**类似于XML的JS扩展语法: JS + XML本质是React.createElement(component, props, ...children)方法的语法糖**
 - 作用: 用来简化创建虚拟DOM
-- 写法：var ele = <h1>Hello JSX!</h1>
+- 写法：`var ele = <h1>Hello JSX!</h1>`
   - 注意1：它**不是字符串, 也不是HTML/XML标签**
   - 注意2：它最终产生的就是一个**JS对象**
 - 标签名任意: HTML标签或其它标签
