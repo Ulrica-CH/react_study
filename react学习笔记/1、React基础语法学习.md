@@ -159,7 +159,7 @@ console.log('真实DOM',TDOM);
 debugger;
 ```
 
-![img](E:\实用软件\新建文件夹\weixinobU7VjmNDRTjCIyPjWAR5NV0AMbM\00eabb42db5840bf9e64b6530b4ccba1\clipboard.png)
+![](http://cdn.michstabe.cn/blog/211204/9ff64mG4lc.png?imageslim)
 
 - 虚拟DOM本质是Object类型的对象（一般对象）
 - 虚拟DOM**比较“轻**”，真实DOM比较“重”，因为虚拟DOM是React内部在用，无需真实DOM上那么多的属性
